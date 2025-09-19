@@ -14,10 +14,20 @@ class BoardArray : public Board {
         }
 
         void add(Entry* entry) {
-            // TODO: IMPLEMENT THIS FUNCTION
-            // ALGORITHM IS PROVIDED IN INSTRUCTIONS.TXT
-            return;
+            for(int i = 0; i < index; i++) {  
+                Entry temp = array[i];
+                if(array[i]) > array[i]){
+                    for(int j = index; j = i; j--){
+                        array[j] = array[j-1];
+                        array[i] = *entry;
+                    }
+                }
+            }
         }
+        // TODO: IMPLEMENT THIS FUNCTION
+        // ALGORITHM IS PROVIDED IN INSTRUCTIONS.TXT
+        return;
+    }
 
         void print() {
             for (int i = 0; i < index; i++) {
