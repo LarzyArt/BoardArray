@@ -13,20 +13,34 @@ class BoardArray : public Board {
             index = 0;
         }
 
-        void add(Entry* entry) {
-            for(int i = 0; i < index; i++) {  
-                Entry temp = array[i];
-                if(array[i]) > array[i]){
-                    for(int j = index; j = i; j--){
-                        array[j] = array[j-1];
-                        array[i] = *entry;
-                    }
-                }
-            }
-        }
+    void add(Entry* entry) {
         // TODO: IMPLEMENT THIS FUNCTION
         // ALGORITHM IS PROVIDED IN INSTRUCTIONS.TXT
-        return;
+
+        int pos = index;
+        for (int i = 0; i < index; ++i) {
+            if (entry->compare(&array[i])) {
+                pos = i;
+                break;
+            }
+        }
+
+        if (index < SIZE) {
+            for (int j = index; j > pos; --j) {
+                array[j] = array[j - 1];
+            }
+            array[pos] = *entry;
+            ++index;
+        } else {
+            if (pos == SIZE) {
+                std::cout << entry->name << "'s score is too low to be added!\n";
+            } else {
+                for (int j = SIZE - 1; j > pos; --j) {
+                    array[j] = array[j - 1];
+                }
+                array[pos] = *entry;
+            }
+        }
     }
 
         void print() {
